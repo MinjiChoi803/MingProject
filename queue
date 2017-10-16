@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int num = 0, y = 0, cnt = 0;
+	int front = 0, back = 0, size = 0;
+	string x;
+	cin >> num;
+
+	int* arr = new int[num + 1];
+
+	for (int i = 0; i < num; i++)
+	{
+		cin >> x;
+
+		if (x == "push")
+		{
+			cin >> y;
+			arr[cnt++] = y;
+			back++;
+			size++;
+			if (size == 0)
+			{
+				front = cnt;
+				cin >> y;
+				arr[cnt++] = y;
+				back++;
+				size++;
+			}
+		}
+		if (x == "pop")
+		{
+			if (size == 0)
+			{
+				cout << -1 << endl;
+				continue;
+			}
+			cout << arr[front] << endl;
+			size--;
+			if (front > num - 1) {
+				front = num - 1;
+				continue;
+			}
+		
+		}
+		if (x == "size")
+		{
+			cout << size << endl;
+		}
+
+		if (x == "empty")
+		{
+			if (size == 0)
+			{
+				cout << 1 << endl;
+			}
+			else
+			{
+				cout << 0 << endl;
+			}
+		}
+		if (x == "front")
+		{
+			cout << arr[front] << endl;
+			if (size == 0)
+			{
+				cout << -1 << endl;
+				continue;
+			}
+		}
+		if (x == "back")
+		{
+			cout << arr[back-1] << endl;
+			if (size == 0)
+			{
+				cout << -1 << endl;
+				continue;
+			}
+		}
+	}
+
+	system("pause");
+	return 0;
+}
